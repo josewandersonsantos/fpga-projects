@@ -21,7 +21,7 @@
 
 # INTERMEDIARY
 [ ] UART TX
-[X] UART RX
+[ ] UART RX
 [ ] SPI Master
 [ ] SPI Slave
 [ ] PWM
