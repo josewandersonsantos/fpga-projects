@@ -4,11 +4,7 @@ reg a;
 reg b;
 wire y;
 
-and_gate dut(
-    .a(a),
-    .b(b),
-    .y(y)
-);
+and_gate dut(.a(a), .b(b), .y(y));
 
 initial begin
     $dumpfile("wave.vcd");
