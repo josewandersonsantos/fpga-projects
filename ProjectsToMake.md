@@ -1,24 +1,24 @@
-# Básico
+# BASIC
 AND
 OR
 XOR
 MUX
 DEMUX
 
-# Sequencial
+# SEQUENTIAL
 Latch
 Flip-Flop D
 Registrador
 Contador
 
-# Médio
+# INTERMEDIARY
 UART TX
 UART RX
 SPI Master
 SPI Slave
 PWM
 
-# Avançado
+# ADVANCED
 CPU de 8 bits
 Pipeline
 Cache
