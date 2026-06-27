@@ -1,0 +1,6 @@
+VCD info: dumpfile main.vcd opened for output.
+Time=0ns | A= 0 B= 0 Cin=0 | Sum= 0 Cout=0
+Time=10ns | A= 5 B= 3 Cin=0 | Sum= 8 Cout=0
+Time=20ns | A=15 B= 1 Cin=0 | Sum= 0 Cout=1
+Time=30ns | A= 7 B= 7 Cin=1 | Sum=15 Cout=0
+tb.v:36: $finish called at 40 (1s)

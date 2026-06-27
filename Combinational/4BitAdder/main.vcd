@@ -1,0 +1,168 @@
+$date
+	Sat Jun 27 20:18:19 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module main_tb $end
+$var wire 4 ! s [3:0] $end
+$var wire 1 " cout $end
+$var reg 4 # a [3:0] $end
+$var reg 4 $ b [3:0] $end
+$var reg 1 % cin $end
+$scope module uut $end
+$var wire 4 & a [3:0] $end
+$var wire 4 ' b [3:0] $end
+$var wire 1 % cin $end
+$var wire 4 ( s [3:0] $end
+$var wire 1 " cout $end
+$var wire 1 ) c3 $end
+$var wire 1 * c2 $end
+$var wire 1 + c1 $end
+$scope module fa0 $end
+$var wire 1 , a $end
+$var wire 1 - b $end
+$var wire 1 % cin $end
+$var wire 1 + cout $end
+$var wire 1 . outAnd1 $end
+$var wire 1 / outAnd2 $end
+$var wire 1 0 outOr1 $end
+$var wire 1 1 s $end
+$upscope $end
+$scope module fa1 $end
+$var wire 1 2 a $end
+$var wire 1 3 b $end
+$var wire 1 + cin $end
+$var wire 1 * cout $end
+$var wire 1 4 outAnd1 $end
+$var wire 1 5 outAnd2 $end
+$var wire 1 6 outOr1 $end
+$var wire 1 7 s $end
+$upscope $end
+$scope module fa2 $end
+$var wire 1 8 a $end
+$var wire 1 9 b $end
+$var wire 1 * cin $end
+$var wire 1 ) cout $end
+$var wire 1 : outAnd1 $end
+$var wire 1 ; outAnd2 $end
+$var wire 1 < outOr1 $end
+$var wire 1 = s $end
+$upscope $end
+$scope module fa3 $end
+$var wire 1 > a $end
+$var wire 1 ? b $end
+$var wire 1 ) cin $end
+$var wire 1 " cout $end
+$var wire 1 @ outAnd1 $end
+$var wire 1 A outAnd2 $end
+$var wire 1 B outOr1 $end
+$var wire 1 C s $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+0C
+0B
+0A
+0@
+0?
+0>
+0=
+0<
+0;
+0:
+09
+08
+07
+06
+05
+04
+03
+02
+01
+00
+0/
+0.
+0-
+0,
+0+
+0*
+0)
+b0 (
+b0 '
+b0 &
+0%
+b0 $
+b0 #
+0"
+b0 !
+$end
+#10
+1C
+1)
+1:
+1*
+14
+1+
+b1000 !
+b1000 (
+0=
+16
+1/
+1<
+1-
+13
+1,
+18
+b11 $
+b11 '
+b101 #
+b101 &
+#20
+1"
+b0 !
+b0 (
+0C
+1@
+1B
+03
+12
+1>
+b1 $
+b1 '
+b1111 #
+b1111 &
+#30
+0"
+17
+04
+1=
+0:
+1C
+0@
+06
+15
+0<
+1;
+0B
+b1111 !
+b1111 (
+11
+13
+19
+0>
+1%
+b111 $
+b111 '
+b111 #
+b111 &
+#40
