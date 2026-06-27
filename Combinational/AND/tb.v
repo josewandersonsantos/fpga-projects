@@ -7,7 +7,7 @@ wire y;
 and_gate dut(.a(a), .b(b), .y(y));
 
 initial begin
-    $dumpfile("wave.vcd");
+    $dumpfile("main.vcd");
     $dumpvars(0,tb);
 
     a=0; b=0; #10;
