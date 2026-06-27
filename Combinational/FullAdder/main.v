@@ -1,7 +1,7 @@
 /*
- * Full Summer
+ * Full Adder
  */
-module summer(a, b, cin, s, cout);
+module fulladder(a, b, cin, s, cout);
 
     input a, b, cin;
     output s, cout;
