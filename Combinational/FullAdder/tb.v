@@ -5,7 +5,7 @@ module main_tb;
     reg a_tb, b_tb, cin_tb;
     wire s_tb, cout_tb;
 
-    summer uut(.a(a_tb), .b(b_tb), .cin(cin_tb), .s(s_tb), .cout(cout_tb));
+    fulladder uut(.a(a_tb), .b(b_tb), .cin(cin_tb), .s(s_tb), .cout(cout_tb));
 
     initial begin
         $dumpfile("main.vcd");
