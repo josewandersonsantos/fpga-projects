@@ -1,0 +1,18 @@
+VCD info: dumpfile main.vcd opened for output.
+A0=0 | A1=0 | A2=0 | A3=0 | P=0 | Time0ns
+A0=1 | A1=0 | A2=0 | A3=0 | P=1 | Time10ns
+A0=0 | A1=1 | A2=0 | A3=0 | P=1 | Time20ns
+A0=1 | A1=1 | A2=0 | A3=0 | P=0 | Time30ns
+A0=0 | A1=0 | A2=1 | A3=0 | P=1 | Time40ns
+A0=1 | A1=0 | A2=1 | A3=0 | P=0 | Time50ns
+A0=1 | A1=1 | A2=0 | A3=0 | P=0 | Time60ns
+A0=1 | A1=1 | A2=1 | A3=0 | P=1 | Time70ns
+A0=0 | A1=0 | A2=0 | A3=1 | P=1 | Time80ns
+A0=1 | A1=0 | A2=0 | A3=1 | P=0 | Time90ns
+A0=0 | A1=1 | A2=0 | A3=1 | P=0 | Time100ns
+A0=1 | A1=1 | A2=0 | A3=1 | P=1 | Time110ns
+A0=0 | A1=0 | A2=1 | A3=1 | P=0 | Time120ns
+A0=1 | A1=0 | A2=1 | A3=1 | P=1 | Time130ns
+A0=0 | A1=1 | A2=1 | A3=1 | P=1 | Time140ns
+A0=1 | A1=1 | A2=1 | A3=1 | P=0 | Time150ns
+tb.v:49: $finish called at 160 (1s)

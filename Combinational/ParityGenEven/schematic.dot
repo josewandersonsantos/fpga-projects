@@ -1,0 +1,20 @@
+digraph "paritygeneven" {
+label="paritygeneven";
+rankdir="LR";
+remincross=true;
+n3 [ shape=octagon, label="a0", color="black", fontcolor="black" ];
+n4 [ shape=octagon, label="a1", color="black", fontcolor="black" ];
+n5 [ shape=octagon, label="a2", color="black", fontcolor="black" ];
+n6 [ shape=octagon, label="a3", color="black", fontcolor="black" ];
+n7 [ shape=octagon, label="p", color="black", fontcolor="black" ];
+c11 [ shape=record, label="{{<p8> A|<p9> B}|$85\n$_XNOR_|{<p10> Y}}",  ];
+c12 [ shape=record, label="{{<p8> A|<p9> B}|$86\n$_XNOR_|{<p10> Y}}",  ];
+c13 [ shape=record, label="{{<p8> A|<p9> B}|$87\n$_XOR_|{<p10> Y}}",  ];
+c11:p10:e -> c12:p8:w [color="black", fontcolor="black", label=""];
+c12:p10:e -> c13:p8:w [color="black", fontcolor="black", label=""];
+n3:e -> c11:p9:w [color="black", fontcolor="black", label=""];
+n4:e -> c11:p8:w [color="black", fontcolor="black", label=""];
+n5:e -> c12:p9:w [color="black", fontcolor="black", label=""];
+n6:e -> c13:p9:w [color="black", fontcolor="black", label=""];
+c13:p10:e -> n7:w [color="black", fontcolor="black", label=""];
+}
