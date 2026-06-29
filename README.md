@@ -28,26 +28,32 @@ All examples are simulated using **Icarus Verilog** and **GTKWave** before targe
 ```text
 .
 ├── Combinational
-│   ├── AND
-│   ├── FULL ADDER
-│   ├── 4 BIT ADDER
-│   ├── MAGNITUDE COMPARATOR
-│   └── PARITY GENERATOR EVEN
+│   ├── [x] AND
+│   ├── [x] FULL ADDER
+│   ├── [x] 4 BIT ADDER
+│   ├── [x] MAGNITUDE COMPARATOR
+│   ├── [x] MUX 4x1
+│   ├── [x] MUX 2x1
+│   └── [x] PARITY GENERATOR EVEN
+│
+├── Bitwise
+│   └── [x] LEFT SHIFT
 │
 ├── Sequential
-│   ├── FlipFlop
-│   └── FlipFlopReset
-│   ├── Counter4Bits
-│   ├── Counter8Bits
-│   ├── ShiftRegister
-│   ├── ClockDivider
-│   ├── EdgeDetector
-│   └── FSM_TrafficLight
+│   ├── [ ] FlipFlop
+│   ├── [ ] FlipFlopReset
+│   ├── [ ] Counter4Bits
+│   ├── [ ] Counter8Bits
+│   ├── [ ] ShiftRegister
+│   ├── [ ] ClockDivider
+│   ├── [ ] EdgeDetector
+│   └── [ ] FSM_TrafficLight
+│
 ├── Protocols/
-|   ├── UART_TX
-|   ├── UART_RX
-|   ├── SPI_Master
-|   └── I2C_Master
+|   ├── [ ] UART_TX
+|   ├── [ ] UART_RX
+|   ├── [ ] SPI_Master
+|   └── [ ] I2C_Master
 ```
 
 ---
@@ -64,7 +70,6 @@ Basic logic circuits where outputs depend only on current inputs.
 | OR      | Two-input OR gate  |
 | XOR     | Exclusive OR gate  |
 | MUX     | Multiplexer        |
-| DEMUX   | Demultiplexer      |
 
 ---
 
@@ -99,7 +104,7 @@ Project/
 | `main.v`   | Hardware implementation         |
 | `tb.v`     | Testbench                       |
 | `Makefile` | Build and simulation automation |
-| `sim`      | Generated simulation executable |
+| `main.vvp` | Generated simulation executable |
 | `wave.vcd` | Waveform output                 |
 
 ---
