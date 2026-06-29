@@ -29,10 +29,10 @@ All examples are simulated using **Icarus Verilog** and **GTKWave** before targe
 .
 ├── Combinational
 │   ├── AND
-│   ├── OR
-│   ├── XOR
-│   ├── MUX
-│   └── DEMUX
+│   ├── FULL ADDER
+│   ├── 4 BIT ADDER
+│   ├── MAGNITUDE COMPARATOR
+│   └── PARITY GENERATOR EVEN
 │
 ├── Sequential
 │   ├── FlipFlop
