@@ -1,0 +1,10 @@
+VCD info: dumpfile main.vcd opened for output.
+Time=0ns | I0=1 | I1=0 | I2=0 | I3=0 | S0=0 | S1=0 | F=1
+Time=100ns | I0=0 | I1=0 | I2=0 | I3=0 | S0=0 | S1=0 | F=0
+Time=200ns | I0=0 | I1=1 | I2=0 | I3=0 | S0=1 | S1=0 | F=1
+Time=300ns | I0=0 | I1=0 | I2=0 | I3=0 | S0=1 | S1=0 | F=0
+Time=400ns | I0=0 | I1=0 | I2=1 | I3=0 | S0=0 | S1=1 | F=1
+Time=500ns | I0=0 | I1=0 | I2=0 | I3=0 | S0=0 | S1=1 | F=0
+Time=600ns | I0=0 | I1=0 | I2=0 | I3=1 | S0=1 | S1=1 | F=1
+Time=700ns | I0=0 | I1=0 | I2=0 | I3=0 | S0=1 | S1=1 | F=0
+tb.v:44: $finish called at 800 (1s)
