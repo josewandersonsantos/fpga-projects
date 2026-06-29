@@ -1,0 +1,6 @@
+VCD info: dumpfile main.vcd opened for output.
+S0=0 I0=1 I1=0 F=1 Time=0ns
+S0=0 I0=0 I1=1 F=0 Time=10ns
+S0=1 I0=0 I1=1 F=1 Time=20ns
+S0=1 I0=1 I1=0 F=0 Time=30ns
+tb.v:29: $finish called at 40 (1s)
