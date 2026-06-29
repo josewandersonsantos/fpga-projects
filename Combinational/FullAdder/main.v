@@ -14,7 +14,7 @@ module fulladder(a, b, cin, s, cout);
     // and and2(outAnd2, a, b);
     // or or3(cout, outAnd1, outAnd2);
 
-    assign s = a ^b ^ cin;
+    assign s = a ^ b ^ cin;
     assign cout = a&b | a&cin | b&cin;
 
 endmodule
