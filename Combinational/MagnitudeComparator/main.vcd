@@ -1,0 +1,59 @@
+$date
+	Mon Jun 29 09:41:06 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module main_tb $end
+$var wire 1 ! altb $end
+$var wire 1 " agtb $end
+$var wire 1 # aeqb $end
+$var reg 4 $ a [3:0] $end
+$var reg 4 % b [3:0] $end
+$scope module uut $end
+$var wire 4 & a [3:0] $end
+$var wire 1 # aeqb $end
+$var wire 1 " agtb $end
+$var wire 1 ! altb $end
+$var wire 4 ' b [3:0] $end
+$var wire 1 ( x0 $end
+$var wire 1 ) x1 $end
+$var wire 1 * x2 $end
+$var wire 1 + x3 $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+1+
+1*
+1)
+1(
+b1111 '
+b1111 &
+b1111 %
+b1111 $
+1#
+0"
+0!
+$end
+#100
+0#
+1"
+0+
+b111 %
+b111 '
+#200
+1!
+0"
+b1111 %
+b1111 '
+b111 $
+b111 &
+#300

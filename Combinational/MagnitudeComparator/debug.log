@@ -1,0 +1,6 @@
+VCD info: dumpfile main.vcd opened for output.
+Time=0ns | A=15 B=15 AeqB=1 | AgtB=0 AltB=0
+Time=100ns | A=15 B= 7 AeqB=0 | AgtB=1 AltB=0
+Time=200ns | A= 7 B=15 AeqB=0 | AgtB=0 AltB=1
+Finish.
+tb.v:22: $finish called at 300 (1s)
