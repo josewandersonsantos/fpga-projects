@@ -35,6 +35,7 @@ All examples are simulated using **Icarus Verilog** and **GTKWave** before targe
 │   ├── [x] MUX 4x1
 │   ├── [x] MUX 2x1
 │   └── [x] PARITY GENERATOR EVEN
+│   └── [x] ARITHMETIC LOGIC UNIT
 │
 ├── Bitwise
 │   └── [x] LEFT SHIFT
