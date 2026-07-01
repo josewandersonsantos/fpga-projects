@@ -41,9 +41,9 @@ All examples are simulated using **Icarus Verilog** and **GTKWave** before targe
 │   └── [x] LEFT SHIFT
 │
 ├── Sequential
-│   ├── [x] FlipFlop
-│   ├── [x] FlipFlopReset
-│   ├── [ ] Counter4Bits
+│   ├── [x] FLIP FLOP
+│   ├── [x] FLIP FLOP WITH RESET
+│   ├── [x] COUNTER 4 BITS
 │   ├── [ ] Counter8Bits
 │   ├── [ ] ShiftRegister
 │   ├── [ ] ClockDivider

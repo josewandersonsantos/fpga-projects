@@ -14,9 +14,9 @@
 # SEQUENTIAL
 [x] FLIP FLOP
 [x] FLIP FLOP WITH RESET
+[x] COUNTER 4BIT
 [ ] LATCH
 [ ] Registrador
-[ ] Contador
 
 # INTERMEDIARY
 [ ] UART TX
