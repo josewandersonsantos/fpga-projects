@@ -1,0 +1,10 @@
+VCD info: dumpfile main.vcd opened for output.
+BIN=  0, H= 0, D= 0, U= 0
+BIN= 10, H= 0, D= 1, U= 0
+BIN= 53, H= 0, D= 5, U= 3
+BIN= 89, H= 0, D= 8, U= 9
+BIN=121, H= 1, D= 2, U= 1
+BIN=181, H= 1, D= 8, U= 1
+BIN=248, H= 2, D= 4, U= 8
+BIN=255, H= 2, D= 5, U= 5
+tb.v:25: $finish called at 80 (1s)
