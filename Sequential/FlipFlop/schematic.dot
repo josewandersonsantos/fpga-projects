@@ -1,0 +1,12 @@
+digraph "dff" {
+label="dff";
+rankdir="LR";
+remincross=true;
+n1 [ shape=octagon, label="clk", color="black", fontcolor="black" ];
+n2 [ shape=octagon, label="d", color="black", fontcolor="black" ];
+n3 [ shape=octagon, label="q", color="black", fontcolor="black" ];
+c7 [ shape=record, label="{{<p4> C|<p5> D}|$80\n$_DFF_P_|{<p6> Q}}",  ];
+n1:e -> c7:p4:w [color="black", fontcolor="black", label=""];
+n2:e -> c7:p5:w [color="black", fontcolor="black", label=""];
+c7:p6:e -> n3:w [color="black", fontcolor="black", label=""];
+}

@@ -1,0 +1,21 @@
+VCD info: dumpfile main.vcd opened for output.
+At time                    0, clk = 0, d = 0, q = x
+At time                 5000, clk = 1, d = 0, q = 0
+At time                10000, clk = 0, d = 1, q = 0
+At time                15000, clk = 1, d = 1, q = 1
+At time                20000, clk = 0, d = 1, q = 1
+At time                25000, clk = 1, d = 1, q = 1
+At time                30000, clk = 0, d = 0, q = 1
+At time                35000, clk = 1, d = 0, q = 0
+At time                40000, clk = 0, d = 0, q = 0
+At time                45000, clk = 1, d = 0, q = 0
+At time                50000, clk = 0, d = 1, q = 0
+At time                55000, clk = 1, d = 1, q = 1
+At time                60000, clk = 0, d = 1, q = 1
+At time                65000, clk = 1, d = 1, q = 1
+At time                70000, clk = 0, d = 0, q = 1
+At time                75000, clk = 1, d = 0, q = 0
+At time                80000, clk = 0, d = 0, q = 0
+At time                85000, clk = 1, d = 0, q = 0
+tb.v:29: $finish called at 90000 (1ps)
+At time                90000, clk = 0, d = 0, q = 0

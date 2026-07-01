@@ -10,8 +10,13 @@ dff uut (.clk(clk), .d(d), .q(q));
 
 initial
 begin
-    $dumpfile("dff.vcd");
+    $dumpfile("main.vcd");
     $dumpvars(0, dff_tb);
+end
+
+initial
+begin
+    $monitor("At time %t, clk = %b, d = %b, q = %b", $time, clk, d, q);
 
     clk = 0;
     d = 0;
