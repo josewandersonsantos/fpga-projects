@@ -12,8 +12,9 @@
 [x] LEFT SHIFT
 
 # SEQUENTIAL
-[ ] Latch
-[ ] Flip-Flop D
+[x] FLIP FLOP
+[x] FLIP FLOP WITH RESET
+[ ] LATCH
 [ ] Registrador
 [ ] Contador
 
