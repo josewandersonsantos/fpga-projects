@@ -1,0 +1,103 @@
+$date
+	Tue Jun 30 23:41:40 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module main_tb $end
+$var wire 4 ! f [3:0] $end
+$var reg 4 " i0 [3:0] $end
+$var reg 4 # i1 [3:0] $end
+$var reg 4 $ i2 [3:0] $end
+$var reg 4 % i3 [3:0] $end
+$var reg 4 & i4 [3:0] $end
+$var reg 4 ' i5 [3:0] $end
+$var reg 4 ( i6 [3:0] $end
+$var reg 4 ) i7 [3:0] $end
+$var reg 1 * s0 $end
+$var reg 1 + s1 $end
+$var reg 1 , s2 $end
+$scope module uut $end
+$var wire 4 - i0 [3:0] $end
+$var wire 4 . i1 [3:0] $end
+$var wire 4 / i2 [3:0] $end
+$var wire 4 0 i3 [3:0] $end
+$var wire 4 1 i4 [3:0] $end
+$var wire 4 2 i5 [3:0] $end
+$var wire 4 3 i6 [3:0] $end
+$var wire 4 4 i7 [3:0] $end
+$var wire 1 * s0 $end
+$var wire 1 + s1 $end
+$var wire 1 , s2 $end
+$var reg 4 5 f [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 5
+b111 4
+b110 3
+b101 2
+b100 1
+b11 0
+b10 /
+b1 .
+b0 -
+0,
+0+
+0*
+b111 )
+b110 (
+b101 '
+b100 &
+b11 %
+b10 $
+b1 #
+b0 "
+b0 !
+$end
+#10
+b1 !
+b1 5
+1*
+#20
+b10 !
+b10 5
+1+
+0*
+#30
+b11 !
+b11 5
+1*
+#40
+b100 !
+b100 5
+1,
+0+
+0*
+#50
+b101 !
+b101 5
+1*
+#60
+b110 !
+b110 5
+1+
+0*
+#70
+b111 !
+b111 5
+1*
+#80
+b0 !
+b0 5
+0,
+0+
+0*

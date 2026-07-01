@@ -1,0 +1,10 @@
+VCD info: dumpfile main.vcd opened for output.
+Time=10 s=001 f=0000
+Time=20 s=010 f=0001
+Time=30 s=011 f=0010
+Time=40 s=100 f=0011
+Time=50 s=101 f=0100
+Time=60 s=110 f=0101
+Time=70 s=111 f=0110
+Time=80 s=000 f=0111
+tb.v:24: $finish called at 80 (1s)
