@@ -1,0 +1,12 @@
+VCD info: dumpfile main.vcd opened for output.
+Input: 0000 | Output: a=0 b=0 c=0 d=0 e=0 f=0 g=1 | Time: 0
+Input: 0001 | Output: a=1 b=0 c=0 d=1 e=1 f=1 g=1 | Time: 10
+Input: 0010 | Output: a=0 b=0 c=1 d=0 e=0 f=1 g=0 | Time: 20
+Input: 0011 | Output: a=0 b=0 c=0 d=0 e=1 f=1 g=0 | Time: 30
+Input: 0100 | Output: a=1 b=0 c=0 d=1 e=1 f=0 g=0 | Time: 40
+Input: 0101 | Output: a=0 b=1 c=0 d=0 e=1 f=0 g=0 | Time: 50
+Input: 0110 | Output: a=0 b=1 c=0 d=0 e=0 f=0 g=0 | Time: 60
+Input: 0111 | Output: a=0 b=0 c=0 d=1 e=1 f=1 g=1 | Time: 70
+Input: 1000 | Output: a=0 b=0 c=0 d=0 e=0 f=0 g=0 | Time: 80
+Input: 1001 | Output: a=0 b=0 c=0 d=0 e=1 f=0 g=0 | Time: 90
+Input: 1010 | Output: a=1 b=1 c=1 d=1 e=1 f=1 g=1 | Time: 100
