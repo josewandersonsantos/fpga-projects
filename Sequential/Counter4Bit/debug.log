@@ -1,0 +1,18 @@
+VCD info: dumpfile main.vcd opened for output.
+Time=5 q=0000
+Time=15 q=0001
+Time=25 q=0010
+Time=35 q=0011
+Time=45 q=0100
+Time=55 q=0101
+Time=65 q=0110
+Time=75 q=0111
+Time=85 q=1000
+Time=95 q=1001
+Time=105 q=1010
+Time=115 q=1011
+Time=125 q=1100
+Time=135 q=1101
+Time=145 q=1110
+tb.v:16: $finish called at 155 (1s)
+Time=155 q=1111
