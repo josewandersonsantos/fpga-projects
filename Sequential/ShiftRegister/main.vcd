@@ -1,0 +1,62 @@
+$date
+	Wed Jul  1 10:17:48 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module main_tb $end
+$var wire 4 ! q [3:0] $end
+$var reg 1 " clr $end
+$var reg 4 # d [3:0] $end
+$var reg 1 $ ld $end
+$var reg 1 % left $end
+$var reg 1 & right $end
+$scope module uut $end
+$var wire 1 " clr $end
+$var wire 4 ' d [3:0] $end
+$var wire 1 $ ld $end
+$var wire 1 % left $end
+$var wire 1 & right $end
+$var reg 4 ( q [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 (
+b0 '
+0&
+0%
+0$
+b0 #
+0"
+b0 !
+$end
+#10
+1"
+#20
+0"
+#30
+b1010 !
+b1010 (
+b1010 #
+b1010 '
+1$
+#40
+0$
+#50
+b100 !
+b100 (
+1%
+#60
+0%
+#70
+b10 !
+b10 (
+1&
+#80
+0&
+#90
