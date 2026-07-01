@@ -15,6 +15,7 @@
 [x] FLIP FLOP
 [x] FLIP FLOP WITH RESET
 [x] COUNTER 4BIT
+[x] MUX 8x1 4Bit
 [ ] LATCH
 [ ] Registrador
 

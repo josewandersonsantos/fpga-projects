@@ -43,6 +43,7 @@ All examples are simulated using **Icarus Verilog** and **GTKWave** before targe
 ├── Sequential
 │   ├── [x] FLIP FLOP
 │   ├── [x] FLIP FLOP WITH RESET
+│   ├── [x] MUX 8x1 4Bit
 │   ├── [x] COUNTER 4 BITS
 │   ├── [ ] Counter8Bits
 │   ├── [ ] ShiftRegister
