@@ -4,7 +4,6 @@
 `default_nettype none
 module main(clk_in, rst_in);
     input wire clk_in, rst_in;
-    wire [7:0] bus;
 
     wire clk, hlt;
     wire rst = rst_in;
@@ -26,6 +25,9 @@ module main(clk_in, rst_in);
     
     wire ir_en, ir_ld;
     wire [7:0] ir_out;
+    
+    reg [7:0] bus;
+    wire [4:0] bus_en = {pc_en, mem_en, ir_en, a_en, addsub_en};
 
     clk uut_clk(.hlt(hlt), .in(clk_in), .out(clk));
     pc uut_pc(.clk(clk), .rst(rst), .inc(pc_inc), .out(pc_out));
@@ -36,9 +38,20 @@ module main(clk_in, rst_in);
     ir uut_ir(.clk(clk), .rst(rst), .ld(ir_ld), .bus(bus), .out(ir_out));
     controller uut_controller(.clk(clk), .rst(rst), .opcode(ir_out[7:4]), .out({hlt, pc_inc, pc_en, mem_ld, mem_en, ir_ld, ir_en, a_ld, a_en, b_ld, addsub_sub_flag, addsub_en}));
 
-    assign bus = (pc_en)    ? pc_out    :
-                 (mem_en)   ? mem_out   :
-                 (a_en)     ? a_out     :
-                 (addsub_en)? addsub_out:
-                 (ir_en)    ? ir_out    : 8'b0;
+    // assign bus = (pc_en)    ? pc_out    :
+    //              (mem_en)   ? mem_out   :
+    //              (a_en)     ? a_out     :
+    //              (addsub_en)? addsub_out:
+    //              (ir_en)    ? ir_out    : 8'b0;
+
+    always @(*) begin
+        case (bus_en)
+            5'b00001: bus = addsub_out;
+            5'b00010: bus = a_out;
+            5'b00100: bus = ir_out;
+            5'b01000: bus = mem_out;
+            5'b10000: bus = pc_out;
+            default : bus = 8'b00;
+        endcase
+    end
 endmodule
