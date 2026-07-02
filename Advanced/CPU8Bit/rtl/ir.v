@@ -9,8 +9,8 @@
  *
  */
 `default_nettype none
-module ir(clk, rst, ld, en, bus, out);
-    input clk, rst, ld, en;
+module ir(clk, rst, ld, bus, out);
+    input clk, rst, ld;
     input [7:0] bus;
     output [7:0] out;
     reg [7:0] ir;
@@ -24,6 +24,6 @@ module ir(clk, rst, ld, en, bus, out);
         end
     end
 
-    assign out = en ? ir : 8'b0;
+    assign out = ir;
 
 endmodule

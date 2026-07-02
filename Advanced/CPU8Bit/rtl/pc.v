@@ -8,7 +8,7 @@
  *
  */
 `default_nettype none
-module pc(clk, rst, en, inc, out);
+module pc(clk, rst, inc, out);
     input clk, rst, inc, en;
     output [7:0] out;
     reg [3:0] pc;
@@ -22,5 +22,5 @@ module pc(clk, rst, en, inc, out);
         end
     end
 
-    assign out = en ? pc : 8'b0;
+    assign out = pc;
 endmodule

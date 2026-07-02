@@ -9,8 +9,8 @@
  *
  */
 `default_nettype none
-module memory(clk, rst, en, ld, bus, out);
-    input clk, rst, ld, en;
+module memory(clk, rst, ld, bus, out);
+    input clk, rst, ld;
     input [7:0] bus;
     output [7:0] out;
     reg [3:0] addr;
@@ -34,6 +34,6 @@ module memory(clk, rst, en, ld, bus, out);
         end
     end
 
-    assign out = en ? mem[addr] : 8'b0;
+    assign out = mem[addr];
 
 endmodule
