@@ -48,8 +48,11 @@ All examples are simulated using **Icarus Verilog** and **GTKWave** before targe
 │   ├── [ ] Counter8Bits
 │   ├── [ ] ShiftRegister
 │   ├── [ ] ClockDivider
-│   ├── [ ] EdgeDetector
-│   └── [ ] FSM_TrafficLight
+│   └── [ ] EdgeDetector
+|
+├── FSM
+│   ├── [x] MOORE MACHINE
+│   └── [X] MEALY MACHINE
 │
 ├── Protocols/
 |   ├── [ ] UART_TX
@@ -57,8 +60,9 @@ All examples are simulated using **Icarus Verilog** and **GTKWave** before targe
 |   ├── [ ] SPI_Master
 |   └── [ ] I2C_Master
 |
-├── Advanced/
-|   ├── [x] CPU 8-BIT
+└── Advanced/
+    ├── [x] CPU 8-BIT
+    └── [ ] RISCV 32-BIT
 
 ```
 
