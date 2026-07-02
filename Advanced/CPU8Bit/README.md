@@ -282,3 +282,7 @@ Possible extensions include:
 -   CALL / RET
 -   Interrupt support
 -   Transition to a 32-bit RISC-V architecture
+
+# References
+
+https://austinmorlan.com/posts/fpga_computer_sap1/
