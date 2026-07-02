@@ -105,3 +105,6 @@ riscv32-cpu/
 │   └── clean.sh
 │
 └── README.md
+
+# Reference
+https://www.bit-spinner.com/rv32i/rv32i-introduction
