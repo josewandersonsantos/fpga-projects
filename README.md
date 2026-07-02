@@ -56,6 +56,10 @@ All examples are simulated using **Icarus Verilog** and **GTKWave** before targe
 |   ├── [ ] UART_RX
 |   ├── [ ] SPI_Master
 |   └── [ ] I2C_Master
+|
+├── Advanced/
+|   ├── [x] CPU 8-BIT
+
 ```
 
 ---

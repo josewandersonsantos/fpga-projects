@@ -27,7 +27,7 @@
 [ ] PWM
 
 # ADVANCED
-[ ] CPU de 8 bits
+[x] CPU de 8 bits
 [ ] Pipeline
 [ ] Cache
 [ ] RISC-V
