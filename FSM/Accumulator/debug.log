@@ -1,0 +1,20 @@
+VCD info: dumpfile main.vcd opened for output.
+CLK=0, RST=0, X=0, ST=0 VLR=  0, TOT=  0
+CLK=1, RST=1, X=0, ST=1 VLR= 10, TOT=  0
+CLK=0, RST=1, X=0, ST=1 VLR= 10, TOT=  0
+CLK=1, RST=1, X=1, ST=1 VLR= 10, TOT=  0
+CLK=0, RST=1, X=1, ST=1 VLR= 10, TOT=  0
+CLK=1, RST=1, X=0, ST=2 VLR= 10, TOT=  0
+CLK=0, RST=1, X=0, ST=2 VLR= 10, TOT=  0
+CLK=1, RST=1, X=1, ST=3 VLR= 10, TOT= 10
+CLK=0, RST=1, X=1, ST=3 VLR= 10, TOT= 10
+CLK=1, RST=1, X=0, ST=1 VLR= 10, TOT= 10
+CLK=0, RST=1, X=0, ST=1 VLR= 10, TOT= 10
+CLK=1, RST=1, X=1, ST=1 VLR= 10, TOT= 10
+CLK=0, RST=1, X=1, ST=1 VLR= 10, TOT= 10
+CLK=1, RST=1, X=0, ST=2 VLR= 10, TOT= 10
+CLK=0, RST=1, X=0, ST=2 VLR= 10, TOT= 10
+CLK=1, RST=1, X=1, ST=3 VLR= 10, TOT= 20
+CLK=0, RST=1, X=1, ST=3 VLR= 10, TOT= 20
+tb.v:32: $finish called at 17 (1s)
+CLK=1, RST=1, X=1, ST=3 VLR= 10, TOT= 20
