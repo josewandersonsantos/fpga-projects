@@ -105,7 +105,7 @@ Project/
 ├── main.v
 ├── tb.v
 ├── sim
-└── wave.vcd
+└── main.vcd
 ```
 
 ### Files
@@ -116,7 +116,7 @@ Project/
 | `tb.v`     | Testbench                       |
 | `Makefile` | Build and simulation automation |
 | `main.vvp` | Generated simulation executable |
-| `wave.vcd` | Waveform output                 |
+| `main.vcd` | Waveform output                 |
 
 ---
 
@@ -131,7 +131,7 @@ make
 Open the waveform viewer:
 
 ```bash
-gtkwave wave.vcd
+gtkwave main.vcd
 ```
 
 Depending on the project structure:
@@ -140,7 +140,7 @@ Depending on the project structure:
 cd Combinational/AND
 make
 
-gtkwave wave.vcd
+gtkwave main.vcd
 ```
 
 ---
