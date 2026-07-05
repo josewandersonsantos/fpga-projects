@@ -52,7 +52,8 @@ All examples are simulated using **Icarus Verilog** and **GTKWave** before targe
 |
 ├── FSM
 │   ├── [x] MOORE MACHINE
-│   └── [X] MEALY MACHINE
+│   ├── [X] MEALY MACHINE
+│   └── [X] ACCUMULATOR
 │
 ├── Protocols/
 |   ├── [ ] UART_TX
