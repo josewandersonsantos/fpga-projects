@@ -120,11 +120,11 @@ blocks required for that micro-operation.
 
 Only one device may drive the bus at a time.
 
-    PC
-    Memory
-    IR
-    Adder
-    Register A
+        PC
+        Memory
+        IR
+        Adder
+        Register A
             |
             v
        +------------+
