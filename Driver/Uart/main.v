@@ -9,8 +9,8 @@
 `default_nettype none
 module uartmodule #(parameter CLKMASTER = 50_000_000, parameter BAUDRATE = 115200) (clk, rst, en, rx, tx, cts, rts);
     input clk, rst, en, rx;    
-    output tx, cts;
-    output reg hwflow, rts;
+    output tx, cts, rts;
+    reg hwflow;
 
     wire [9:0] data;
     wire [3:0] flags;
@@ -47,20 +47,19 @@ endmodule
 
 `default_nettype none
 module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity, maxstopbits, maxdatabits, data, flags);
-    input clk, rst, en, rx;
-    reg rx_r, rx_rd;
+    input clk, rst, en, rx, hwflow;
+    input [1:0] maxstopbits, parity;
+    input [3:0] maxdatabits;
     
-    output reg hwflow, rts;
-    output reg [1:0] maxstopbits, parity;
-    output reg [3:0] maxdatabits;
+    output reg rts;
     output reg [9:0] data;
     output reg [3:0] flags;
     
+    reg rx_r, rx_rd, counthighbits;
     reg [$clog2(CLK_TICK)-1:0] countclk;
     reg [1:0] countstopbits;
     reg [2:0] state;
-    reg [3:0] countdatabits, counthighbits;
-    
+    reg [3:0] countdatabits;
     reg [9:0] datar;
 
     localparam ST_IDLE      = 3'b000,
@@ -83,7 +82,9 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
 
     initial begin
         state         = ST_IDLE;        
+        datar         = 10'b0;
         data          = 10'b0;
+        flags         = 4'b0;
         countdatabits = 4'b0;
         countclk      = 0;
         rx_r          = 1'b0;
@@ -101,7 +102,7 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
             flags <= 4'b0;
             countdatabits <= 4'b0;
             countstopbits <= 2'b0;
-            counthighbits <= 4'b0;
+            counthighbits <= 1'b0;
         end
         else
             case(state)
@@ -135,7 +136,7 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
                     if (rx_rd == 1'b1) 
                         counthighbits <= ~counthighbits;
                         
-                    if (countdatabits == maxdatabits)
+                    if (countdatabits == maxdatabits - 1)
                         state <= ST_STOPBIT;
                     
                     countclk <= 1'b0;
@@ -184,6 +185,7 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
             ST_CLEANUP: begin
                 state <= ST_IDLE;
                 // flags <= 4'b0;
+                datar <= 10'b0;
                 countdatabits <= 4'b0;
                 countstopbits <= 2'b0;
                 counthighbits <= 4'b0;
