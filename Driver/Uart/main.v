@@ -10,8 +10,8 @@
 module uartmodule #(parameter CLKMASTER = 50_000_000, parameter BAUDRATE = 115200) (clk, rst, en, rx, tx, cts, rts);
     input clk, rst, en, rx;    
     output tx, cts;
+    output reg hwflow, rts;
 
-    wire hwflow, rts;
     wire [9:0] data;
     wire [3:0] flags;
 
@@ -50,19 +50,18 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
     input clk, rst, en, rx;
     reg rx_r, rx_rd;
     
-    output reg hwflow;
+    output reg hwflow, rts;
     output reg [1:0] maxstopbits, parity;
     output reg [3:0] maxdatabits;
-    
-    reg [2:0] state;
-    reg [1:0] countstopbits;
-    reg [3:0] countdatabits, counthighbits;
-    reg [$clog2(CLK_TICK)-1:0] countclk;
-    
-    output rts;
-    reg [9:0] datar;
     output reg [9:0] data;
     output reg [3:0] flags;
+    
+    reg [$clog2(CLK_TICK)-1:0] countclk;
+    reg [1:0] countstopbits;
+    reg [2:0] state;
+    reg [3:0] countdatabits, counthighbits;
+    
+    reg [9:0] datar;
 
     localparam ST_IDLE      = 3'b000,
                ST_STARTBIT  = 3'b001,
