@@ -16,7 +16,7 @@ module main_tb;
     wire cts;
     wire rts;
 
-    uartmodule #(.CLKMASTER(CLK_FREQ), .BAUDRATE(BAUDRATE)) dut (.clk(clk), .rst(rst), .en(en), .rx(rx), .tx(tx), .cts(cts), .rts(rts));
+    uartmodule #(.CLKMASTER(CLK_FREQ), .BAUDRATE(BAUDRATE)) uut (.clk(clk), .rst(rst), .en(en), .rx(rx), .tx(tx), .cts(cts), .rts(rts));
 
     initial begin
         $dumpfile("main.vcd");
@@ -31,9 +31,12 @@ module main_tb;
 
     // UART TX Task
     task uart_send_byte;
+
         input [7:0] data;
         integer i;
+
         begin
+            $monitor("RST=%d RX=%d INDATA=%b OUTDATA=%b FLAGS=%b", rst, rx, data, uut.data, uut.flags);
             // Idle
             rx = 1'b1;
             #(BIT_TIME_NS);
@@ -53,6 +56,9 @@ module main_tb;
 
     // Test Sequence
     initial begin
+
+        // $monitor("CLK=%d RST=%d RX=%d INDATA=%d OUTDATA=%d FLAGS=%X", clk, rst, rx, data, uut.data, uut.flags);
+        // $monitor("RST=%d RX=%d OUTDATA=%b FLAGS=%b", rst, rx, uut.data, uut.flags);
 
         rst = 1;
         en  = 1;
