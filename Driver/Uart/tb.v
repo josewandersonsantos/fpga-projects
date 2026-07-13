@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module tb_uart_rx;
+module main_tb;
 
     localparam CLK_FREQ    = 50_000_000;
     localparam BAUDRATE    = 115200;
@@ -34,25 +34,20 @@ module tb_uart_rx;
         input [7:0] data;
         integer i;
         begin
-
             // Idle
             rx = 1'b1;
             #(BIT_TIME_NS);
-
             // Start Bit
             rx = 1'b0;
             #(BIT_TIME_NS);
-
             // Data Bits (LSB First)
             for(i=0;i<8;i=i+1) begin
                 rx = data[i];
                 #(BIT_TIME_NS);
             end
-
             // Stop Bit
             rx = 1'b1;
             #(BIT_TIME_NS);
-
         end
     endtask
 
@@ -88,5 +83,4 @@ module tb_uart_rx;
         $finish;
 
     end
-
 endmodule
