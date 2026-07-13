@@ -36,7 +36,7 @@ module main_tb;
         integer i;
 
         begin
-            $monitor("RST=%d RX=%d INDATA=%b OUTDATA=%b FLAGS=%b", rst, rx, data, uut.data, uut.flags);
+            $monitor("RST=%d RX=%d I=%1d INDATA=%b OUTDATA=%b FLAGS=%b", rst, rx, i, data, uut.data, uut.flags);
             // Idle
             rx = 1'b1;
             #(BIT_TIME_NS);
