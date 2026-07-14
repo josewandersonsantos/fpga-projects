@@ -32,12 +32,16 @@ module uartmodule #(parameter CLKMASTER = 50_000_000, parameter BAUDRATE = 11520
     localparam HWFLOWCTRLDIS = 1'b0,
                HWFLOWCTRLEN  = 1'b1;
 
-    initial begin
-        parity      = PARITYNO;
-        maxdatabits = MAXDATABITS8;
-        maxdatabits = parity ? maxdatabits + 1 : maxdatabits;
-        maxstopbits = MAXSTOPBITS1;
-        hwflow      = HWFLOWCTRLDIS;
+    always @(posedge clk) begin
+        if (rst) begin
+            parity      <= PARITYNO;
+            maxstopbits <= MAXSTOPBITS1;
+            hwflow      <= HWFLOWCTRLDIS;
+            if (parity == PARITYNO)
+                maxdatabits <= MAXDATABITS8;
+            else
+                maxdatabits <= MAXDATABITS8 + 1;
+        end
     end
 
     uartrx #(.CLK_TICK(CLKMASTER/BAUDRATE)) rxuut (.clk(clk), .rst(rst), .en(en), .rx(rx), .rts(rts), .hwflow(hwflow), .parity(parity), .maxstopbits(maxstopbits), .maxdatabits(maxdatabits), .data(data), .flags(flags));
@@ -80,56 +84,48 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
                FL_STOPERR   = 3'b010,
                FL_DATAREADY = 3'b100;
 
-    initial begin
-        state         = ST_IDLE;        
-        datar         = 10'b0;
-        data          = 10'b0;
-        flags         = 4'b0;
-        countdatabits = 4'b0;
-        countclk      = 0;
-        rx_r          = 1'b0;
-        rx_rd         = 1'b0;
-    end
-
     always @(posedge clk) begin
         rx_r  <= rx;
         rx_rd <= rx_r;
     end
 
     always @(posedge clk) begin
-        if (rst) begin
-            state <= ST_IDLE;
-            flags <= 4'b0;
+        if (rst) begin            
+            datar         <= 10'b0;
+            data          <= 10'b0;
+            countclk      <= 0;
+            flags         <= 4'b0;
             countdatabits <= 4'b0;
             countstopbits <= 2'b0;
             counthighbits <= 1'b0;
+            state         <= ST_IDLE;
         end
         else
             case(state)
-            ST_IDLE: begin
-                flags <= 4'b0;
-                if(rx_rd == 1'b0)
+            ST_IDLE: begin                
+                if(rx_rd == 1'b0) begin
+                    flags <= 4'b0;
+                    countclk <= 4'b0;
                     state <= ST_STARTBIT;
+                end
                 if(hwflow == HWFLOWCTRLEN)
                     rts <= 1'b1;
             end
 
             ST_STARTBIT: begin
                 if (countclk == (CLK_TICK - 1) / 2) begin
-                    if(rx_rd == 1'b0) begin
+                    countclk <= 1'b0;
+                    if(rx_rd == 1'b0)
                         state <= ST_DATABIT;
-                        countclk <= 1'b0;
-                    end
-                    else begin
+                    else
                         state <= ST_IDLE;
-                        countclk <= 1'b0;
-                    end
                 end
                 else countclk <= countclk + 1;
             end
 
             ST_DATABIT: begin
                 if (countclk == CLK_TICK) begin
+                    countclk <= 1'b0;
                     datar[countdatabits] <= rx_rd;
                     countdatabits <= countdatabits + 1'b1;
 
@@ -139,23 +135,22 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
                     if (countdatabits == maxdatabits - 1)
                         state <= ST_STOPBIT;
                     
-                    countclk <= 1'b0;
                 end
                 else countclk <= countclk + 1;
             end
 
             ST_STOPBIT: begin
                 if (countclk == CLK_TICK) begin
+                    countclk <= 1'b0;
                     if(rx_rd == 1'b0) begin
                         flags <= flags | FL_STOPERR;
                         state <= ST_CLEANUP;
                     end
-                    countstopbits <= countstopbits + 1'b1; 
-                    if(countstopbits == maxstopbits)
-                        state <= ST_PARITYBIT;
-                        // state <= parity ? ST_PARITYBIT : ST_CLEANUP;
-                    
-                    countclk <= 1'b0;
+                    else begin
+                        countstopbits <= countstopbits + 1'b1; 
+                        if(countstopbits == maxstopbits)
+                            state <= ST_PARITYBIT;
+                    end
                 end
                 else countclk <= countclk + 1; 
             end
@@ -184,11 +179,10 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
 
             ST_CLEANUP: begin
                 state <= ST_IDLE;
-                // flags <= 4'b0;
                 datar <= 10'b0;
                 countdatabits <= 4'b0;
                 countstopbits <= 2'b0;
-                counthighbits <= 4'b0;
+                counthighbits <= 1'b0;
             end
             endcase
     end
