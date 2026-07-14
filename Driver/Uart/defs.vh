@@ -1,0 +1,22 @@
+`ifndef UART_DEFS_VH
+`define UART_DEFS_VH
+
+`define PARITYNONE 2'b00
+`define PARITYEVEN 2'b01
+`define PARITYODD  2'b10
+
+`define FL_PARITYERR 3'b001
+`define FL_STOPERR   3'b010
+`define FL_DATAREADY 3'b100
+
+`define HWFLOWCTRLDIS 1'b0
+`define HWFLOWCTRLEN  1'b1
+
+`define MAXDATABITS8  4'b1000
+`define MAXDATABITS9  4'b1001
+`define MAXDATABITS10 4'b1010
+
+`define MAXSTOPBITS1 2'b01
+`define MAXSTOPBITS2 2'b10
+
+`endif
