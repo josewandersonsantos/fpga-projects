@@ -22,7 +22,7 @@ module uartmodule #(parameter CLKMASTER = 50_000_000, parameter BAUDRATE = 11520
                MAXDATABITS9  = 4'b1001,
                MAXDATABITS10 = 4'b1010;
     
-    localparam PARITYNO   = 2'b00,
+    localparam PARITYNONE = 2'b00,
                PARITYEVEN = 2'b01,
                PARITYODD  = 2'b10;
 
@@ -34,10 +34,10 @@ module uartmodule #(parameter CLKMASTER = 50_000_000, parameter BAUDRATE = 11520
 
     always @(posedge clk) begin
         if (rst) begin
-            parity      <= PARITYNO;
+            parity      <= PARITYNONE;
             maxstopbits <= MAXSTOPBITS1;
             hwflow      <= HWFLOWCTRLDIS;
-            if (parity == PARITYNO)
+            if (parity == PARITYNONE)
                 maxdatabits <= MAXDATABITS8;
             else
                 maxdatabits <= MAXDATABITS8 + 1;

@@ -25,7 +25,7 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
                ST_PARITYBIT = 3'b100,
                ST_CLEANUP   = 3'b111;
     
-    localparam PARITYNO   = 2'b00,
+    localparam PARITYNONE = 2'b00,
                PARITYEVEN = 2'b01,
                PARITYODD  = 2'b10;
 
@@ -108,7 +108,7 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
             end
 
             ST_PARITYBIT: begin
-                if(parity == PARITYNO) begin
+                if(parity == PARITYNONE) begin
                     flags <= flags | FL_DATAREADY;
                     data  <= datar;
                 end
