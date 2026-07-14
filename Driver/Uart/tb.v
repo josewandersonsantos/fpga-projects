@@ -60,17 +60,27 @@ module main_tb;
     initial begin
         // $monitor("CLK=%d RST=%d RX=%d INDATA=%d OUTDATA=%d FLAGS=%X", clk, rst, rx, data, uut.data, uut.flags);
         // $monitor("RST=%d RX=%d OUTDATA=%b FLAGS=%b", rst, rx, uut.data, uut.flags);
-        uut.txuut.data = 10'hA4;
-        rst = 1;
-        en  = 1;
-        #(10*CLK_PERIOD);
+        uut.enrx = 1'b0;
 
-        uut.txuut.data = 10'hB8;
         rst = 1;
-        en  = 1;
-        #(10*CLK_PERIOD);
+        uut.entx = 1'b1;
+        uut.txuut.data = 10'hA4;
+        #(CLK_PERIOD);
+
+        rst = 0;
+        uut.entx = 1'b0;
+        #(10*BIT_TIME_NS);
+
+        rst = 1;
+        uut.entx = 1'b1;
+        uut.txuut.data = 10'hB8;
+        #(CLK_PERIOD);
+
+        rst = 0;
+        uut.entx = 1'b0;
+        #(10*BIT_TIME_NS);
         
-        #(1000);
+        // #(1000);
         $finish;
 
         rst = 1;
