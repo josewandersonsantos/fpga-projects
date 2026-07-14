@@ -1,6 +1,8 @@
 /*
  * UART RX
  */
+`include "../Uart/defs.vh"
+
 `default_nettype none
 module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity, maxstopbits, maxdatabits, data, flags);
     input clk, rst, en, rx, hwflow;
@@ -24,17 +26,6 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
                ST_STOPBIT   = 3'b011,
                ST_PARITYBIT = 3'b100,
                ST_CLEANUP   = 3'b111;
-    
-    localparam PARITYNONE = 2'b00,
-               PARITYEVEN = 2'b01,
-               PARITYODD  = 2'b10;
-
-    localparam HWFLOWCTRLDIS = 1'b0,
-               HWFLOWCTRLEN  = 1'b1;
-    
-    localparam FL_PARITYERR = 3'b001,
-               FL_STOPERR   = 3'b010,
-               FL_DATAREADY = 3'b100;
 
     always @(posedge clk) begin
         rx_r  <= rx;
@@ -60,7 +51,7 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
                     countclk <= 4'b0;
                     state <= ST_STARTBIT;
                 end
-                if(hwflow == HWFLOWCTRLEN)
+                if(hwflow == `HWFLOWCTRLEN)
                     rts <= 1'b1;
             end
 
@@ -95,7 +86,7 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
                 if (countclk == CLK_TICK) begin
                     countclk <= 1'b0;
                     if(rx_rd == 1'b0) begin
-                        flags <= flags | FL_STOPERR;
+                        flags <= flags | `FL_STOPERR;
                         state <= ST_CLEANUP;
                     end
                     else begin
@@ -108,24 +99,24 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
             end
 
             ST_PARITYBIT: begin
-                if(parity == PARITYNONE) begin
-                    flags <= flags | FL_DATAREADY;
+                if(parity == `PARITYNONE) begin
+                    flags <= flags | `FL_DATAREADY;
                     data  <= datar;
                 end
-                else if(parity == PARITYEVEN)
+                else if(parity == `PARITYEVEN)
                     if(counthighbits == 1'b0) begin
-                        flags <= flags | FL_DATAREADY;
+                        flags <= flags | `FL_DATAREADY;
                         data  <= datar;
                     end
                     else
-                        flags <= flags | FL_PARITYERR;
-                else if(parity == PARITYODD)
+                        flags <= flags | `FL_PARITYERR;
+                else if(parity == `PARITYODD)
                     if(counthighbits == 1'b1) begin
-                        flags <= flags | FL_DATAREADY;
+                        flags <= flags | `FL_DATAREADY;
                         data  <= datar;
                     end
                     else
-                        flags <= flags | FL_PARITYERR;
+                        flags <= flags | `FL_PARITYERR;
                 state <= ST_CLEANUP;
             end
 

@@ -6,6 +6,8 @@
  * 1 START BIT | N DATA BITS | 0 or 1 PARITY BITS | 1 or 2 STOP BITS
  *
  */
+`include "defs.vh"
+
 `default_nettype none
 module uartmodule #(parameter CLKMASTER = 50_000_000, parameter BAUDRATE = 115200) (clk, rst, en, rx, tx, cts, rts);
     input clk, rst, en, rx;    
@@ -18,29 +20,15 @@ module uartmodule #(parameter CLKMASTER = 50_000_000, parameter BAUDRATE = 11520
     reg [1:0] maxstopbits, parity;
     reg [3:0] maxdatabits;
 
-    localparam MAXDATABITS8  = 4'b1000,
-               MAXDATABITS9  = 4'b1001,
-               MAXDATABITS10 = 4'b1010;
-    
-    localparam PARITYNONE = 2'b00,
-               PARITYEVEN = 2'b01,
-               PARITYODD  = 2'b10;
-
-    localparam MAXSTOPBITS1 = 2'b01,
-               MAXSTOPBITS2 = 2'b10;
-
-    localparam HWFLOWCTRLDIS = 1'b0,
-               HWFLOWCTRLEN  = 1'b1;
-
     always @(posedge clk) begin
         if (rst) begin
-            parity      <= PARITYNONE;
-            maxstopbits <= MAXSTOPBITS1;
-            hwflow      <= HWFLOWCTRLDIS;
-            if (parity == PARITYNONE)
-                maxdatabits <= MAXDATABITS8;
+            parity      <= `PARITYNONE;
+            maxstopbits <= `MAXSTOPBITS1;
+            hwflow      <= `HWFLOWCTRLDIS;
+            if (parity == `PARITYNONE)
+                maxdatabits <= `MAXDATABITS8;
             else
-                maxdatabits <= MAXDATABITS8 + 1;
+                maxdatabits <= `MAXDATABITS8 + 1;
         end
     end
 
