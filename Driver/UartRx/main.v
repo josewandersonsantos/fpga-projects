@@ -2,107 +2,139 @@
  * UART RX
  */
 `default_nettype none
-module uartrx(clk, rst, rx, rts);
-    input clk, rst, rx;
-    reg hwflow;
+module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity, maxstopbits, maxdatabits, data, flags);
+    input clk, rst, en, rx, hwflow;
+    input [1:0] maxstopbits, parity;
+    input [3:0] maxdatabits;
+    
+    output reg rts;
+    output reg [9:0] data;
+    output reg [3:0] flags;
+    
+    reg rx_r, rx_rd, counthighbits;
+    reg [$clog2(CLK_TICK)-1:0] countclk;
+    reg [1:0] countstopbits;
     reg [2:0] state;
-    reg [1:0] countstopbits, maxstopbits, parity;
-    reg [9:0] data;
-    reg [3:0] flags;
-    reg [3:0] countdatabits, counthighbits, maxdatabits;
-    output rts;
+    reg [3:0] countdatabits;
+    reg [9:0] datar;
 
-    localparam STSTARTBIT  = 3'b000,
-               STDATABIT   = 3'b001,
-               STSTOPBIT   = 3'b010,
-               STPARITYBIT = 3'b011,
-               STRST       = 3'b111;
-
-    localparam MAXDATABITS8  = 4'b1000,
-               MAXDATABITS9  = 4'b1001,
-               MAXDATABITS10 = 4'b1010;
+    localparam ST_IDLE      = 3'b000,
+               ST_STARTBIT  = 3'b001,
+               ST_DATABIT   = 3'b010,
+               ST_STOPBIT   = 3'b011,
+               ST_PARITYBIT = 3'b100,
+               ST_CLEANUP   = 3'b111;
     
     localparam PARITYNO   = 2'b00,
                PARITYEVEN = 2'b01,
                PARITYODD  = 2'b10;
 
-    localparam MAXSTOPBITS1 = 2'b01,
-               MAXSTOPBITS2 = 2'b10;
-
     localparam HWFLOWCTRLDIS = 1'b0,
                HWFLOWCTRLEN  = 1'b1;
     
-    localparam FLPARITYERR = 3'b001,
-               FLSTOPERR   = 3'b010,
-               FLDATAREADY = 3'b100;
+    localparam FL_PARITYERR = 3'b001,
+               FL_STOPERR   = 3'b010,
+               FL_DATAREADY = 3'b100;
 
-    initial begin
-        state       = STSTARTBIT;
-        parity      = PARITYEVEN;
-        maxdatabits = MAXDATABITS8;
-        maxstopbits = MAXSTOPBITS1;
-        hwflow      = HWFLOWCTRLDIS;
-
-        data        = 10'b0;
-        countdatabits = 4'b0;
+    always @(posedge clk) begin
+        rx_r  <= rx;
+        rx_rd <= rx_r;
     end
 
     always @(posedge clk) begin
-        if (rst) begin
-            state <= STSTARTBIT;
-            flags = 4'b0;
-            countdatabits = 4'b0;
-            countstopbits = 2'b0;
-            counthighbits = 4'b0;
+        if (rst) begin            
+            datar         <= 10'b0;
+            data          <= 10'b0;
+            countclk      <= 0;
+            flags         <= 4'b0;
+            countdatabits <= 4'b0;
+            countstopbits <= 2'b0;
+            counthighbits <= 1'b0;
+            state         <= ST_IDLE;
         end
         else
             case(state)
-            STSTARTBIT:
-                if(rx == 1'b0) 
-                    state <= STDATABIT;
-
-            STDATABIT: begin            
-                data[countdatabits] = rx;
-                countdatabits = countdatabits + 1'b1;
-
-                if(rx == 1'b1) 
-                    counthighbits = counthighbits + 1'b1;            
-                if(countdatabits == maxdatabits) 
-                    state <= STSTOPBIT;
-            end
-            STSTOPBIT: begin
-                if(rx == 1'b0) begin
-                    flags = flags | FLSTOPERR;
-                    state <= STRST;
+            ST_IDLE: begin                
+                if(rx_rd == 1'b0) begin
+                    flags <= 4'b0;
+                    countclk <= 4'b0;
+                    state <= ST_STARTBIT;
                 end
-                countstopbits = countstopbits + 1'b1; 
-                if(countstopbits == maxstopbits)
-                    state <= STPARITYBIT;
-                    // state <= parity ? STPARITYBIT : STRST;
+                if(hwflow == HWFLOWCTRLEN)
+                    rts <= 1'b1;
             end
-            // Instead to change state, it's better compare in same cycle
-            // last bit ?
-            STPARITYBIT: begin
-                if(parity == PARITYNO)
-                    flags = flags | FLDATAREADY;
+
+            ST_STARTBIT: begin
+                if (countclk == (CLK_TICK - 1) / 2) begin
+                    countclk <= 1'b0;
+                    if(rx_rd == 1'b0)
+                        state <= ST_DATABIT;
+                    else
+                        state <= ST_IDLE;
+                end
+                else countclk <= countclk + 1;
+            end
+
+            ST_DATABIT: begin
+                if (countclk == CLK_TICK) begin
+                    countclk <= 1'b0;
+                    datar[countdatabits] <= rx_rd;
+                    countdatabits <= countdatabits + 1'b1;
+
+                    if (rx_rd == 1'b1) 
+                        counthighbits <= ~counthighbits;
+                        
+                    if (countdatabits == maxdatabits - 1)
+                        state <= ST_STOPBIT;
+                    
+                end
+                else countclk <= countclk + 1;
+            end
+
+            ST_STOPBIT: begin
+                if (countclk == CLK_TICK) begin
+                    countclk <= 1'b0;
+                    if(rx_rd == 1'b0) begin
+                        flags <= flags | FL_STOPERR;
+                        state <= ST_CLEANUP;
+                    end
+                    else begin
+                        countstopbits <= countstopbits + 1'b1; 
+                        if(countstopbits == maxstopbits)
+                            state <= ST_PARITYBIT;
+                    end
+                end
+                else countclk <= countclk + 1; 
+            end
+
+            ST_PARITYBIT: begin
+                if(parity == PARITYNO) begin
+                    flags <= flags | FL_DATAREADY;
+                    data  <= datar;
+                end
                 else if(parity == PARITYEVEN)
-                    if(counthighbits % 2 == 1'b0)
-                        flags = flags | FLDATAREADY;
+                    if(counthighbits == 1'b0) begin
+                        flags <= flags | FL_DATAREADY;
+                        data  <= datar;
+                    end
                     else
-                        flags = flags | FLPARITYERR;
+                        flags <= flags | FL_PARITYERR;
                 else if(parity == PARITYODD)
-                    if(counthighbits % 2 == 1'b1)
-                        flags = flags | FLDATAREADY;
+                    if(counthighbits == 1'b1) begin
+                        flags <= flags | FL_DATAREADY;
+                        data  <= datar;
+                    end
                     else
-                        flags = flags | FLPARITYERR;
-                state <= STRST;
+                        flags <= flags | FL_PARITYERR;
+                state <= ST_CLEANUP;
             end
-            STRST: begin 
-                state <= STSTARTBIT;
-                flags = 4'b0;
-                countdatabits = 4'b0;
-                countstopbits = 2'b0;
-                counthighbits = 4'b0;
+
+            ST_CLEANUP: begin
+                state <= ST_IDLE;
+                datar <= 10'b0;
+                countdatabits <= 4'b0;
+                countstopbits <= 2'b0;
+                counthighbits <= 1'b0;
             end
             endcase
     end
