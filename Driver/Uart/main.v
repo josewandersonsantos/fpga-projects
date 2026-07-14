@@ -33,6 +33,5 @@ module uartmodule #(parameter CLKMASTER = 50_000_000, parameter BAUDRATE = 11520
     end
 
     uartrx #(.CLK_TICK(CLKMASTER/BAUDRATE)) rxuut (.clk(clk), .rst(rst), .en(en), .rx(rx), .rts(rts), .hwflow(hwflow), .parity(parity), .maxstopbits(maxstopbits), .maxdatabits(maxdatabits), .data(data), .flags(flags));
-    // uarttx txuut();
-
+    uarttx #(.CLK_TICK(CLKMASTER/BAUDRATE)) txuut (.clk(clk), .rst(rst), .en(en), .tx(tx), .cts(cts), .hwflow(hwflow), .parity(parity), .maxstopbits(maxstopbits), .maxdatabits(maxdatabits), .data(data), .flags(flags));
 endmodule
