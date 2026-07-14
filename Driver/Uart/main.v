@@ -12,7 +12,7 @@
 module uartmodule #(parameter CLKMASTER = 50_000_000, parameter BAUDRATE = 115200) (clk, rst, en, rx, tx, cts, rts);
     input clk, rst, en, rx;    
     output tx, cts, rts;
-    reg hwflow;
+    reg hwflow, enrx, entx;
 
     wire [9:0] data;
     wire [3:0] flags;
@@ -32,6 +32,6 @@ module uartmodule #(parameter CLKMASTER = 50_000_000, parameter BAUDRATE = 11520
         end
     end
 
-    uartrx #(.CLK_TICK(CLKMASTER/BAUDRATE)) rxuut (.clk(clk), .rst(rst), .en(en), .rx(rx), .rts(rts), .hwflow(hwflow), .parity(parity), .maxstopbits(maxstopbits), .maxdatabits(maxdatabits), .data(data), .flags(flags));
-    uarttx #(.CLK_TICK(CLKMASTER/BAUDRATE)) txuut (.clk(clk), .rst(rst), .en(en), .tx(tx), .cts(cts), .hwflow(hwflow), .parity(parity), .maxstopbits(maxstopbits), .maxdatabits(maxdatabits), .data(data), .flags(flags));
+    uartrx #(.CLK_TICK(CLKMASTER/BAUDRATE)) rxuut (.clk(clk), .rst(rst), .en(enrx), .rx(rx), .rts(rts), .hwflow(hwflow), .parity(parity), .maxstopbits(maxstopbits), .maxdatabits(maxdatabits), .data(data), .flags(flags));
+    uarttx #(.CLK_TICK(CLKMASTER/BAUDRATE)) txuut (.clk(clk), .rst(rst), .en(entx), .tx(tx), .cts(cts), .hwflow(hwflow), .parity(parity), .maxstopbits(maxstopbits), .maxdatabits(maxdatabits), .data(data), .flags(flags));
 endmodule
