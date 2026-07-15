@@ -23,12 +23,9 @@ module uartmodule #(parameter CLKMASTER = 50_000_000, parameter BAUDRATE = 11520
     always @(posedge clk) begin
         if (rst) begin
             parity      <= `PARITYNONE;
+            maxdatabits <= `MAXDATABITS8;
             maxstopbits <= `MAXSTOPBITS1;
             hwflow      <= `HWFLOWCTRLDIS;
-            if (parity == `PARITYNONE)
-                maxdatabits <= `MAXDATABITS8;
-            else
-                maxdatabits <= `MAXDATABITS8 + 1;
         end
     end
 

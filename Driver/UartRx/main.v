@@ -75,9 +75,41 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
                     if (rx_rd == 1'b1) 
                         counthighbits <= ~counthighbits;
                         
-                    if (countdatabits == maxdatabits - 1)
-                        state <= ST_STOPBIT;
+                    if (countdatabits == maxdatabits)
+                        state <= parity == `PARITYNONE ? ST_STOPBIT : ST_PARITYBIT;
                     
+                end
+                else countclk <= countclk + 1;
+            end
+
+            ST_PARITYBIT: begin
+                if (countclk == CLK_TICK) begin
+                    countclk <= 1'b0;
+                
+                    if(parity == `PARITYEVEN)
+                        if(counthighbits == 1'b0) begin
+                            if(counthighbits == rx_rd) begin
+                                flags <= flags | `FL_DATAREADY;
+                                data  <= datar;
+                            end
+                            else
+                                flags <= flags | `FL_PARITYERR;
+                        end
+                        else
+                            flags <= flags | `FL_PARITYERR;
+                    else if(parity == `PARITYODD)
+                        if(counthighbits == 1'b1) begin
+                            if(counthighbits == rx_rd) begin
+                                flags <= flags | `FL_DATAREADY;
+                                data  <= datar;
+                            end
+                            else
+                                flags <= flags | `FL_PARITYERR;
+                        end
+                        else
+                            flags <= flags | `FL_PARITYERR;
+                    state <= ST_STOPBIT;
+
                 end
                 else countclk <= countclk + 1;
             end
@@ -92,32 +124,10 @@ module uartrx #(parameter CLK_TICK = 434) (clk, rst, en, rx, rts, hwflow, parity
                     else begin
                         countstopbits <= countstopbits + 1'b1; 
                         if(countstopbits == maxstopbits)
-                            state <= ST_PARITYBIT;
+                            state <= ST_CLEANUP;
                     end
                 end
                 else countclk <= countclk + 1; 
-            end
-
-            ST_PARITYBIT: begin
-                if(parity == `PARITYNONE) begin
-                    flags <= flags | `FL_DATAREADY;
-                    data  <= datar;
-                end
-                else if(parity == `PARITYEVEN)
-                    if(counthighbits == 1'b0) begin
-                        flags <= flags | `FL_DATAREADY;
-                        data  <= datar;
-                    end
-                    else
-                        flags <= flags | `FL_PARITYERR;
-                else if(parity == `PARITYODD)
-                    if(counthighbits == 1'b1) begin
-                        flags <= flags | `FL_DATAREADY;
-                        data  <= datar;
-                    end
-                    else
-                        flags <= flags | `FL_PARITYERR;
-                state <= ST_CLEANUP;
             end
 
             ST_CLEANUP: begin
