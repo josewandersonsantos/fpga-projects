@@ -1,0 +1,4 @@
+v 4
+file . "main.vhd" "05f8fe501426a5437301a1e07ef9e448d8061e03" "20260716132601.040":
+  entity c_and at 1( 0) + 0 on 13;
+  architecture ckt of c_and at 4( 62) + 0 on 14;

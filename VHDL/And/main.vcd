@@ -1,0 +1,21 @@
+$date
+  Thu Jul 16 10:26:01 2026
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module c_and $end
+$var reg 1 ! a $end
+$var reg 1 " b $end
+$var reg 1 # y $end
+$upscope $end
+$enddefinitions $end
+#0
+0!
+0"
+0#

@@ -4,4 +4,4 @@ END c_and;
 ARCHITECTURE ckt OF c_and IS
 BEGIN
     y <= a AND b;
-END ckt
+END ckt;
