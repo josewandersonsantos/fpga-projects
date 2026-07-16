@@ -1,0 +1,4 @@
+v 4
+file . "main.vhd" "86ca42e6ffe140bacd895e2ed3f93fe4ee7e9861" "20260716132655.016":
+  entity c_or at 1( 0) + 0 on 11;
+  architecture ckt of c_or at 4( 60) + 0 on 12;

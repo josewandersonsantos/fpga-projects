@@ -4,4 +4,4 @@ END c_or;
 ARCHITECTURE ckt OF c_or IS
 BEGIN
     y <= a OR b;
-END ckt
+END ckt;
