@@ -2,6 +2,6 @@ init:
 	iverilog -Wall main.v tb.v -o main.vvp
 run: init
 	vvp main.vvp > debug.log
-	yosys -p "read_verilog main.v; synth -top alu; show -format png -prefix schematic"
+	yosys -p "read_verilog main.v; synth_intel -top alu; show -format png -prefix schematic"
 sim: run
 	gtkwave main.vcd

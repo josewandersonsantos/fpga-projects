@@ -7,4 +7,3 @@ A=1001 B=0111 OPR=100 S= 1 Time=40ns
 A=1001 B=0111 OPR=101 S=15 Time=50ns
 A=1001 B=0111 OPR=110 S=14 Time=60ns
 A=1111 B=0111 OPR=111 S= 0 Time=70ns
-tb.v:44: $finish called at 80 (1s)
