@@ -45,8 +45,8 @@ All examples are simulated using **Icarus Verilog** and **GTKWave** before targe
 │   ├── [x] FLIP FLOP WITH RESET
 │   ├── [x] MUX 8x1 4Bit
 │   ├── [x] COUNTER 4 BITS
-│   ├── [ ] Counter8Bits
-│   ├── [ ] ShiftRegister
+│   ├── [x] Counter8Bits
+│   ├── [x] ShiftRegister
 │   ├── [ ] ClockDivider
 │   └── [ ] EdgeDetector
 |
@@ -56,8 +56,8 @@ All examples are simulated using **Icarus Verilog** and **GTKWave** before targe
 │   └── [X] ACCUMULATOR
 │
 ├── Protocols/
-|   ├── [ ] UART_TX
-|   ├── [ ] UART_RX
+|   ├── [X] UART_TX
+|   ├── [X] UART_RX
 |   ├── [ ] SPI_Master
 |   └── [ ] I2C_Master
 |
