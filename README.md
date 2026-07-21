@@ -25,47 +25,43 @@ All examples are simulated using **Icarus Verilog** and **GTKWave** before targe
 
 ## Repository Structure
 
-```text
-.
-├── Combinational
-│   ├── [x] AND
-│   ├── [x] FULL ADDER
-│   ├── [x] 4 BIT ADDER
-│   ├── [x] MAGNITUDE COMPARATOR
-│   ├── [x] MUX 4x1
-│   ├── [x] MUX 2x1
-│   ├── [x] PARITY GENERATOR EVEN
-│   └── [x] ARITHMETIC LOGIC UNIT
-│
-├── Bitwise
-│   └── [x] LEFT SHIFT
-│
-├── Sequential
-│   ├── [x] FLIP FLOP
-│   ├── [x] FLIP FLOP WITH RESET
-│   ├── [x] MUX 8x1 4Bit
-│   ├── [x] COUNTER 4 BITS
-│   ├── [x] Counter8Bits
-│   ├── [x] ShiftRegister
-│   ├── [ ] ClockDivider
-│   └── [ ] EdgeDetector
-|
-├── FSM
-│   ├── [x] MOORE MACHINE
-│   ├── [X] MEALY MACHINE
-│   └── [X] ACCUMULATOR
-│
-├── Protocols/
-|   ├── [X] UART TX
-|   ├── [X] UART RX
-|   ├── [ ] SPI Master
-|   └── [ ] I2C Master
-|
-└── Advanced/
-    ├── [x] CPU 8-BIT
-    └── [ ] RISCV 32-BIT
+## Combinational
+- [x] AND
+- [x] Full Adder
+- [x] 4 Bit Adder
+- [x] Magnitude Comparator
+- [x] Mux 4x1
+- [x] Mux 2x1
+- [x] Parity Generator Even
+- [x] Arithmetic Logic Unit
 
-```
+## Bitwise
+- [x] Left Shift
+
+## Sequential
+- [x] Flip Flop
+- [x] Flip Flop With Reset
+- [x] Mux 8x1 4bit
+- [x] Counter 4 Bits
+- [x] Counter 8 Bits
+- [x] Shift Register
+- [ ] Clock Divider
+- [ ] Edge Detector
+
+## FSM
+- [x] Moore Machine
+- [x] Mealy Machine
+- [x] Accumulator
+
+## Protocols
+- [x] UART TX
+- [x] UART RX
+- [ ] SPI Master
+- [ ] I2C Master
+
+## Advanced
+- [x] CPU 8-Bit
+- [ ] RISC-V 32-Bit
 
 ---
 
