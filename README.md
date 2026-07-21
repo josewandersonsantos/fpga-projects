@@ -56,13 +56,13 @@ All examples are simulated using **Icarus Verilog** and **GTKWave** before targe
 │   └── [X] ACCUMULATOR
 │
 ├── Protocols/
-|   ├── [X] UART_TX
-|   ├── [X] UART_RX
-|   ├── [ ] SPI_Master
-|   └── [ ] I2C_Master
+|   ├── [X] UART TX
+|   ├── [X] UART RX
+|   ├── [ ] SPI Master
+|   └── [ ] I2C Master
 |
 └── Advanced/
-    ├── [] CPU 8-BIT
+    ├── [x] CPU 8-BIT
     └── [ ] RISCV 32-BIT
 
 ```
