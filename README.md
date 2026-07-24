@@ -1,11 +1,11 @@
 # FPGA Study
 
 ![Purpose](https://img.shields.io/badge/Purpose-Learning-orange)
+![Status](https://img.shields.io/badge/Status-In_Progress-yellow)
 ![HDL](https://img.shields.io/badge/HDL-Verilog-blue)
 ![Simulator](https://img.shields.io/badge/Simulator-Icarus_Verilog-success)
 ![Waveform](https://img.shields.io/badge/Waveform-GTKWave-purple)
 ![Synthesis](https://img.shields.io/badge/Synthesis-Yosys-lightgrey)
-![Status](https://img.shields.io/badge/Status-In_Progress-yellow)
 ![License](https://img.shields.io/github/license/josewandersonsantos/fpga-projects)
 
 A personal repository for learning FPGA development, digital design, and Verilog through hands-on projects and simulations.
